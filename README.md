@@ -1,0 +1,2 @@
+# yartbot
+Yandex ART Bot
