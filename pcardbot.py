@@ -15,6 +15,7 @@ class PCardBot(TelegramBot):
         self.gpt = gpt
 
     def check(self):
+        print(f" + Check with {self.queue}")
         nqueue = {}
         for id,x in self.queue.items():
             res = self.art.check(id,return_img=False)
