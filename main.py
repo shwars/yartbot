@@ -7,6 +7,7 @@ from flask_cors import CORS, cross_origin
 from flask_apscheduler import APScheduler
 from pcardbot import PCardBot
 from yandex_art import YandexArt
+import redis
 
 with open('config.json') as f:
     config = json.load(f)
@@ -21,8 +22,9 @@ scheduler.init_app(app)
 def not_found(error):
     return make_response(jsonify({'status': 'error', 'reason' : str(error) }), 500)
 
+red = redis.Redis("localhost",6379)
 yart = YandexArt(config)
-pcardbot = PCardBot(config['pcard_bot'],yart,None)
+pcardbot = PCardBot(config['pcard_bot'],red,yart,None)
 
 @app.route('/pcardhook',methods=['GET','POST'])
 def pcard_hook():
