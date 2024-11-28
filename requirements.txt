@@ -3,3 +3,4 @@ flask-cors
 flask_apscheduler
 pillow
 redis
+yandex-chain
