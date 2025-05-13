@@ -28,7 +28,7 @@ red = redis.Redis("localhost",6379)
 yart = YandexArt(config)
 gpt = YandexLLM(folder_id=config['folder_id'],api_key=config['api_key'],model=YandexGPTModel.ProRC)
 
-pcardbot = PCardBot(config['pcard_bot'],red,yart,None)
+pcardbot = PCardBot(config['pcard_bot'],red,yart,None,config['pcard_event'])
 
 @app.route('/pcardhook',methods=['GET','POST'])
 def pcard_hook():
